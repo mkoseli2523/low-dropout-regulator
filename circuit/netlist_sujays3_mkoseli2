@@ -1,0 +1,73 @@
+
+// Library name: ece483_sp25
+// Cell name: tri_cas
+// View name: schematic
+subckt tri_cas VDD VSS vin vip vout
+    N8 (net1 VBN2 net4 VSS) tsmc18dN w=4.5u l=540.0n as=2.025e-12 \
+        ad=2.025e-12 ps=9.9u pd=9.9u m=1 region=sat
+    N15 (VBN2 net13 VBN1 VSS) tsmc18dN w=270.0n l=360.0n as=1.215e-13 \
+        ad=1.215e-13 ps=1.44u pd=1.44u m=1 region=sat
+    N7 (vout VBN2 net9 VSS) tsmc18dN w=4.5u l=540.0n as=2.025e-12 \
+        ad=2.025e-12 ps=9.9u pd=9.9u m=1 region=sat
+    N3 (net9 VBN1 net8 VSS) tsmc18dN w=4.005u l=360.0n as=1.80225e-12 \
+        ad=1.80225e-12 ps=8.91u pd=8.91u m=1 region=sat
+    N16 (net13 net13 VBN2 VSS) tsmc18dN w=810.0n l=360.0n as=3.645e-13 \
+        ad=3.645e-13 ps=2.52u pd=2.52u m=1 region=sat
+    N1 (net8 vin net3 VSS) tsmc18dN w=6.03u l=360.0n as=2.7135e-12 \
+        ad=2.7135e-12 ps=12.96u pd=12.96u m=1 region=sat
+    N2 (net3 net6 VSS VSS) tsmc18dN w=6.03u l=360.0n as=2.7135e-12 \
+        ad=2.7135e-12 ps=12.96u pd=12.96u m=1 region=sat
+    N10 (net14 VBN1 net3 VSS) tsmc18dN w=360.0n l=360.0n as=1.62e-13 \
+        ad=1.62e-13 ps=1.62u pd=1.62u m=1 region=sat
+    N18 (VBN1 VBN2 net14 VSS) tsmc18dN w=810.0n l=360.0n as=3.645e-13 \
+        ad=3.645e-13 ps=2.52u pd=2.52u m=1 region=sat
+    N0 (net2 vip net3 VSS) tsmc18dN w=6.03u l=360.0n as=2.7135e-12 \
+        ad=2.7135e-12 ps=12.96u pd=12.96u m=1 region=sat
+    N4 (net4 VBN1 net2 VSS) tsmc18dN w=4.005u l=360.0n as=1.80225e-12 \
+        ad=1.80225e-12 ps=8.91u pd=8.91u m=1 region=sat
+    N5 (net6 net6 VSS VSS) tsmc18dN w=6.03u l=360.0n as=2.7135e-12 \
+        ad=2.7135e-12 ps=12.96u pd=12.96u m=1 region=sat
+    P5 (net6 VBP1 VDD VDD) tsmc18dP w=1.26u l=360.0n as=5.67e-13 \
+        ad=5.67e-13 ps=3.42u pd=3.42u m=1 region=sat
+    P0 (net10 net1 VDD VDD) tsmc18dP w=4.995u l=495.00n as=2.24775e-12 \
+        ad=2.24775e-12 ps=10.89u pd=10.89u m=1 region=sat
+    P1 (net5 net1 VDD VDD) tsmc18dP w=4.995u l=495.00n as=2.24775e-12 \
+        ad=2.24775e-12 ps=10.89u pd=10.89u m=1 region=sat
+    P18 (VBP1 VBP2 net15 VDD) tsmc18dP w=1.62u l=360.0n as=7.29e-13 \
+        ad=7.29e-13 ps=4.14u pd=4.14u m=1 region=sat
+    P3 (net11 VBP1 net10 VDD) tsmc18dP w=4.995u l=495.00n as=2.24775e-12 \
+        ad=2.24775e-12 ps=10.89u pd=10.89u m=1 region=sat
+    P15 (VBP2 net12 VBP1 VDD) tsmc18dP w=540.0n l=360.0n as=2.43e-13 \
+        ad=2.43e-13 ps=1.98u pd=1.98u m=1 region=sat
+    P2 (vout VBP2 net11 VDD) tsmc18dP w=9u l=540.0n as=4.05e-12 \
+        ad=4.05e-12 ps=18.9u pd=18.9u m=1 region=sat
+    P16 (net12 net12 VBP2 VDD) tsmc18dP w=1.62u l=360.0n as=7.29e-13 \
+        ad=7.29e-13 ps=4.14u pd=4.14u m=1 region=sat
+    P6 (net1 VBP2 net7 VDD) tsmc18dP w=9u l=540.0n as=4.05e-12 ad=4.05e-12 \
+        ps=18.9u pd=18.9u m=1 region=sat
+    P4 (net7 VBP1 net5 VDD) tsmc18dP w=4.995u l=495.00n as=2.24775e-12 \
+        ad=2.24775e-12 ps=10.89u pd=10.89u m=1 region=sat
+    P14 (net15 VBP1 VDD VDD) tsmc18dP w=540.0n l=360.0n as=2.43e-13 \
+        ad=2.43e-13 ps=1.98u pd=1.98u m=1 region=sat
+    I10 (net12 net13) isource dc=6u type=dc
+ends tri_cas
+// End of subcircuit definition.
+
+// Library name: ece483_sp25
+// Cell name: ldo
+// View name: schematic
+subckt ldo VSS Vfb_i Vfb_o Vin Vout
+    C2 (Vg Vout) capacitor c=7p
+    V0 (net8 VSS) vsource dc=800.0m type=dc
+    R0 (Vout Vfb_o) resistor r=10K
+    R1 (Vfb_o VSS) resistor r=20K
+    P0 (Vout Vg Vin Vin) tsmc18dP w=1.305u l=180.0n as=5.8725e-13 \
+        ad=5.8725e-13 ps=3.51u pd=3.51u m=500 region=sat
+    I4 (Vin VSS net8 Vfb_i Vg) tri_cas
+ends ldo
+// End of subcircuit definition.
+
+// Library name: ece483_sp25
+// Cell name: dut_ldo
+// View name: schematic
+I0 (net3 net1 net5 net4 net2) ldo
